@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Example</title>
+    <link rel="stylesheet" th:href="@{/vendor/css/bootstrap.min.css}"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"/>
+</head>
+
+<body class="bg-light">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">Inyección SQL</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 p-4 rounded shadow mt-4 bg-white">
+            <div th:if="${error}" th:text="${error}" class="alert alert-danger alert-dismissible">
+                Error
+            </div>
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input class="form-control" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/vendor/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/vendor/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
