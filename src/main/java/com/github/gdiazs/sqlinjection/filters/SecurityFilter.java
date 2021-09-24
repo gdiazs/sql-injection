@@ -20,7 +20,7 @@ public class SecurityFilter implements Filter {
 
         if (ObjectUtils.isEmpty(userName)) {
             var httpResp = (HttpServletResponse) servletResponse;
-            var redirectPath = httpReq.getContextPath() + "/";
+            var redirectPath = httpReq.getContextPath() + "/login";
             httpResp.setHeader("Location", httpResp.encodeRedirectURL(redirectPath));
             httpResp.setStatus(HttpStatus.TEMPORARY_REDIRECT.value());
         }else {

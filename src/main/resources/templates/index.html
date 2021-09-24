@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Example</title>
-    <link rel="stylesheet" th:href="@{/vendor/css/bootstrap.min.css}"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/vendor/css/bootstrap.min.css}"/>
 </head>
 
 <body class="bg-light">
@@ -20,22 +19,16 @@
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 offset-md-4 p-4 rounded shadow mt-4 bg-white">
-            <div th:if="${error}" th:text="${error}" class="alert alert-danger alert-dismissible">
-                Error
+        <div class="text-center w-100">
+            <h1>Inyección SQL Demostración</h1>
+            <p>
+                Pequeño ejemplo de cómo se puede vulenar un formulario
+            </p>
+            <div>
+                <a  class="btn btn-outline-secondary" href="https://github.com/gdiazs/sql-injection">Código fuente</a> <a  class="btn btn-primary" th:href="@{/login}">Entrar</a>
             </div>
-            <form action="/login" method="post">
-                <div class="form-group">
-                    <label for="username">Usuario</label>
-                    <input class="form-control" id="username" name="username" autocomplete="off"/>
-                </div>
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" class="form-control" autocomplete="off"/>
-                </div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar Sesión</button>
-            </form>
         </div>
+
     </div>
 </div>
 <script th:src="@{/vendor/js/jquery-3.6.0.min.js}"></script>

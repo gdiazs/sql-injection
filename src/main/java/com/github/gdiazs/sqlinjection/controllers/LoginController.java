@@ -38,12 +38,17 @@ public class LoginController {
         }
 
         redirectAttr.addFlashAttribute("error", "Usuario o contraseña inválidos");
-        return "redirect:/";
+        return "redirect:/login";
     }
+    @GetMapping("/login")
+    public String logout() {
+        return "login";
+    }
+
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         request.getSession(true).invalidate();
-        return "redirect:/";
+        return "redirect:/login";
     }
 }
