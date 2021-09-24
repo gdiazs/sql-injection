@@ -19,13 +19,17 @@ public class UserDao {
     }
 
     public boolean userExists(final String username, final String password){
+        final var sqlFindByUserNameAndPassword = "SELECT username FROM users WHERE username=? and password=?";
+
         String foundUsername = null;
         try (var connection = this.dataSource.getConnection();
-             var statement = connection.createStatement()) {
+             var statement = connection.prepareStatement(sqlFindByUserNameAndPassword)) {
 
-            final var sqlFindByUserNameAndPassword = String.format("SELECT username FROM users WHERE username='%s' and password='%s'", username, password);
             logger.info("sql: {}", sqlFindByUserNameAndPassword);
-            final var resultSet = statement.executeQuery(sqlFindByUserNameAndPassword);
+            statement.setString( 1, username );
+            statement.setString( 2, password );
+
+            final var resultSet = statement.executeQuery();
 
             while(resultSet.next()){
                 foundUsername = resultSet.getString("username");
